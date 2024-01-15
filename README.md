@@ -1,4 +1,4 @@
-# TravelMobileApp
+# Travel Africa Mobile App
 
 ### Design Reference:
 
