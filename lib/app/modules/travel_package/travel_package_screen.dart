@@ -7,7 +7,7 @@ import 'package:new_project/app/data/constants/app_colors.dart';
 import 'package:new_project/app/data/constants/app_typography.dart';
 import 'package:new_project/app/models/travel_package_model.dart';
 import 'package:new_project/app/modules/details_screen/details_screen.dart';
-import 'package:new_project/app/modules/home/components/textformwidget.dart';
+import 'package:new_project/app/modules/home/components/searchbar_widget.dart';
 import 'package:new_project/app/modules/travel_package/components/package_tiles.dart';
 
 class TravelPackageScreen extends StatefulWidget {
@@ -22,6 +22,8 @@ class _TravelPackageScreenState extends State<TravelPackageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        shadowColor: AppColors.kTransparentColor,
+        surfaceTintColor: AppColors.kTransparentColor,
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +39,7 @@ class _TravelPackageScreenState extends State<TravelPackageScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Hello Shahzain",
+                  "Hello, FlutterMotionLab",
                   style: AppTypography.kBold12
                       .copyWith(color: AppColors.kGreyColor),
                 ),
@@ -68,54 +70,39 @@ class _TravelPackageScreenState extends State<TravelPackageScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            SizedBox(height: 20.h),
-            Container(
-              height: 45.h,
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.1),
-                    spreadRadius: 0.5,
-                    blurRadius: 8,
-                    offset: const Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              width: Get.width,
-              child: CustomTextFormWidget(
-                title: "",
-                myIcon: const Icon(Icons.search),
-                controller: TextEditingController(),
-                hintText: "",
-              ),
+      body: ListView(
+        children: [
+          SizedBox(height: 20.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: SearchBarWidget(
+              title: "",
+              myIcon: const Icon(Icons.search),
+              controller: TextEditingController(),
+              hintText: "",
             ),
-            SizedBox(height: 20.h),
-            Text("Travel Packages", style: AppTypography.kExtraBold16),
-            SizedBox(height: 20.h),
-            SizedBox(
-              height: Get.height * 0.8,
-              child: ListView.separated(
-                padding: EdgeInsets.only(bottom: 100.h),
-                separatorBuilder: (context, index) => SizedBox(height: 20.h),
-                physics: const BouncingScrollPhysics(),
-                scrollDirection: Axis.vertical,
-                itemCount: myTravelPackageList.length,
-                itemBuilder: (context, index) {
-                  return TravelPackageTiles(
-                    onTap: () => Get.to(DetailsScreen(
-                      detailsScreenModel: myTravelPackageList[index],
-                    )),
-                    travelPackageModel: myTravelPackageList[index],
-                  );
-                },
-              ),
-            )
-          ],
-        ),
+          ),
+          SizedBox(height: 20.h),
+          Center(
+              child:
+                  Text("Travel Packages", style: AppTypography.kExtraBold16)),
+          SizedBox(height: 20.h),
+          ListView.separated(
+            shrinkWrap: true,
+            separatorBuilder: (context, index) => SizedBox(height: 20.h),
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            itemCount: myTravelPackageList.length,
+            itemBuilder: (context, index) {
+              return TravelPackageTiles(
+                onTap: () => Get.to(DetailsScreen(
+                  detailsScreenModel: myTravelPackageList[index],
+                )),
+                travelPackageModel: myTravelPackageList[index],
+              );
+            },
+          )
+        ],
       ),
     );
   }

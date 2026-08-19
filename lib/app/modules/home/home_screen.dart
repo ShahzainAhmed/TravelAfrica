@@ -8,7 +8,7 @@ import 'package:new_project/app/models/travel_package_model.dart';
 import 'package:new_project/app/modules/details_screen/details_screen.dart';
 import 'package:new_project/app/modules/home/components/heading_widget.dart';
 import 'package:new_project/app/modules/home/components/picture_large_tile.dart';
-import 'package:new_project/app/modules/home/components/textformwidget.dart';
+import 'package:new_project/app/modules/home/components/searchbar_widget.dart';
 import 'package:new_project/app/modules/home/components/travel_package_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Hello Shahzain",
+                  "Hello, FlutterMotionLab",
                   style: AppTypography.kBold12
                       .copyWith(color: AppColors.kGreyColor),
                 ),
@@ -62,17 +62,20 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(left: 20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
+      body: ListView(
+        physics: NeverScrollableScrollPhysics(),
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Text(
               "let's go \ntrip to africa",
               style: AppTypography.kBold30,
             ),
-            SizedBox(height: 20.h),
-            Row(
+          ),
+          SizedBox(height: 20.h),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
@@ -89,95 +92,92 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   width: Get.width * 0.75,
-                  child: CustomTextFormWidget(
+                  child: SearchBarWidget(
                     title: "",
                     myIcon: const Icon(Icons.search),
                     controller: TextEditingController(),
                     hintText: "",
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(right: 20.w),
-                  child: Container(
-                    height: 40.h,
-                    width: 40.w,
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(10.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.1),
-                          spreadRadius: 0.5,
-                          blurRadius: 8,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: const Icon(Icons.menu, color: AppColors.kWhiteColor),
+                Container(
+                  height: 40.h,
+                  width: 40.w,
+                  decoration: BoxDecoration(
+                    color: Colors.amber,
+                    borderRadius: BorderRadius.circular(10.r),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        spreadRadius: 0.5,
+                        blurRadius: 8,
+                        offset:
+                            const Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
                   ),
+                  child: const Icon(Icons.menu, color: AppColors.kWhiteColor),
                 )
               ],
             ),
-            SizedBox(height: 10.h),
-            const MyHeadingWidget(title: "Places"),
-            SizedBox(height: 10.h),
-            SizedBox(
-              height: 190.h,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                physics: const BouncingScrollPhysics(),
-                itemCount: myTravelPackageList.length,
-                itemBuilder: (context, index) {
-                  return Column(
+          ),
+          SizedBox(height: 10.h),
+          const MyHeadingWidget(title: "Places"),
+          SizedBox(
+            height: 200.h,
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              separatorBuilder: (context, index) => SizedBox(width: 10.w),
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              itemCount: myTravelPackageList.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  child: Column(
                     children: [
-                      Row(
-                        children: [
-                          MyLargeTile(
-                              travelPackageModel: myTravelPackageList[index],
-                              onTap: () => Get.to(DetailsScreen(
-                                    detailsScreenModel:
-                                        myTravelPackageList[index],
-                                  ))),
-                          SizedBox(width: 20.w),
-                        ],
+                      MyLargeTile(
+                        travelPackageModel: myTravelPackageList[index],
+                        onTap: () => Get.to(DetailsScreen(
+                          detailsScreenModel: myTravelPackageList[index],
+                        )),
                       ),
                     ],
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-            SizedBox(height: 10.h),
-            const MyHeadingWidget(title: "Packages"),
-            SizedBox(height: 10.h),
-            SizedBox(
-              height: 190.h,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                physics: const BouncingScrollPhysics(),
-                itemCount: myTravelPackageList.length,
-                itemBuilder: (context, index) {
-                  return Column(
+          ),
+          SizedBox(height: 10.h),
+          const MyHeadingWidget(title: "Packages"),
+          SizedBox(
+            height: 200.h,
+            child: ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              separatorBuilder: (context, index) => SizedBox(width: 10.w),
+              scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
+              itemCount: myTravelPackageList.length,
+              itemBuilder: (context, index) {
+                final reversedIndex = myTravelPackageList.length - 1 - index;
+                return Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.h),
+                  child: Column(
                     children: [
-                      Row(
-                        children: [
-                          MyTravelPackageTile(
-                            onTap: () => Get.to(DetailsScreen(
-                              detailsScreenModel: myTravelPackageList[index],
-                            )),
-                            travelPackageModel: myTravelPackageList[index],
-                          ),
-                          SizedBox(width: 20.w),
-                        ],
+                      MyTravelPackageTile(
+                        onTap: () => Get.to(DetailsScreen(
+                          detailsScreenModel:
+                              myTravelPackageList[reversedIndex],
+                        )),
+                        travelPackageModel: myTravelPackageList[reversedIndex],
                       ),
                     ],
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
-            SizedBox(height: 100.h)
-          ],
-        ),
+          ),
+          SizedBox(height: 100.h)
+        ],
       ),
     );
   }

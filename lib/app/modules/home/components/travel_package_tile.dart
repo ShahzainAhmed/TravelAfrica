@@ -28,7 +28,7 @@ class _MyTravelPackageTileState extends State<MyTravelPackageTile> {
           color: AppColors.kWhiteColor,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
+              color: AppColors.kBlackColor.withOpacity(0.2),
               spreadRadius: 0.5,
               blurRadius: 8,
               offset: const Offset(0, 3), // changes position of shadow
@@ -67,21 +67,20 @@ class _MyTravelPackageTileState extends State<MyTravelPackageTile> {
                       .copyWith(color: AppColors.kGreyColor),
                 ),
                 SizedBox(height: 10.h),
-                Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.amber, size: 10.sp),
-                    SizedBox(width: 5.w),
-                    Text(
-                      widget.travelPackageModel.rating,
-                      style: AppTypography.kMedium10
-                          .copyWith(color: AppColors.kGreyColor),
-                    ),
-                    SizedBox(width: 5.w),
-                    Text(
-                      "See Online",
-                      style: AppTypography.kBold8.copyWith(color: Colors.blue),
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(left: 40.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Icon(Icons.star, color: Colors.amber, size: 12.sp),
+                      SizedBox(width: 4.w),
+                      Text(
+                        widget.travelPackageModel.rating,
+                        style: AppTypography.kMedium10
+                            .copyWith(color: AppColors.kGreyColor),
+                      ),
+                    ],
+                  ),
                 )
               ],
             ),

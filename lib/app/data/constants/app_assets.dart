@@ -6,5 +6,5 @@ class AppAssets {
   static String kZebra = 'assets/images/zebra.jpg';
   static String kCamel = 'assets/images/camels.jpg';
   static String kRiver = 'assets/images/river.jpg';
-  static String kAvatar = 'assets/images/avatar.png';
+  static String kAvatar = 'assets/images/tiktok.jpg';
 }

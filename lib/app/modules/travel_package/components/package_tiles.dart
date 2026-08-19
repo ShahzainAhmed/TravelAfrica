@@ -21,61 +21,65 @@ class _TravelPackageTilesState extends State<TravelPackageTiles> {
   bool isPressed = false;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        GestureDetector(
-          onTap: widget.onTap,
-          child: Container(
-            height: 135.h,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.kBlackColor.withOpacity(0.2),
-                  blurRadius: 5.r,
-                  offset: const Offset(0, 3),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: widget.onTap,
+            child: Container(
+              height: 135.h,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.kBlackColor.withOpacity(0.18),
+                    blurRadius: 12.r,
+                    spreadRadius: 1.r,
+                    offset: Offset(0, 5.h),
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(20.r),
+                image: DecorationImage(
+                  image: AssetImage(widget.travelPackageModel.image),
+                  fit: BoxFit.cover,
                 ),
-              ],
-              borderRadius: BorderRadius.circular(20.r),
-              image: DecorationImage(
-                image: AssetImage(widget.travelPackageModel.image),
-                fit: BoxFit.cover,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ListTile(
+                    title: Text(
+                      widget.travelPackageModel.title,
+                      style: AppTypography.kBold16.copyWith(
+                        color: AppColors.kWhiteColor,
+                      ),
+                    ),
+                    subtitle: Text(
+                      widget.travelPackageModel.subtitle,
+                      style: AppTypography.kMedium12.copyWith(
+                        color: AppColors.kWhiteColor,
+                      ),
+                    ),
+                    trailing: CircleAvatar(
+                      backgroundColor: AppColors.kWhiteColor,
+                      child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isPressed = !isPressed;
+                            });
+                          },
+                          icon: Icon(
+                            isPressed ? Icons.favorite : Icons.favorite_outline,
+                            color: AppColors.kOrangeColor,
+                          )),
+                    ),
+                  )
+                ],
               ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ListTile(
-                  title: Text(
-                    widget.travelPackageModel.title,
-                    style: AppTypography.kBold16.copyWith(
-                      color: AppColors.kWhiteColor,
-                    ),
-                  ),
-                  subtitle: Text(
-                    widget.travelPackageModel.subtitle,
-                    style: AppTypography.kMedium12.copyWith(
-                      color: AppColors.kWhiteColor,
-                    ),
-                  ),
-                  trailing: CircleAvatar(
-                    backgroundColor: AppColors.kWhiteColor,
-                    child: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            isPressed = !isPressed;
-                          });
-                        },
-                        icon: Icon(
-                          isPressed ? Icons.favorite : Icons.favorite_outline,
-                          color: AppColors.kOrangeColor,
-                        )),
-                  ),
-                )
-              ],
-            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

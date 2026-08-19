@@ -85,11 +85,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 15.h),
-                    const CustomDetailsRow(),
-                    SizedBox(height: 30.h),
+                    SizedBox(height: 14.h),
                     Text(
-                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                      widget.detailsScreenModel.packageDetails,
+                      style: AppTypography.kMedium10
+                          .copyWith(color: AppColors.kGreyColor),
+                    ),
+                    SizedBox(height: 20.h),
+                    Text(
+                      widget.detailsScreenModel.description,
                       style: AppTypography.kMedium10.copyWith(
                         color: AppColors.kBlackColor.withOpacity(0.7),
                       ),

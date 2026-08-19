@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:new_project/app/data/constants/app_colors.dart';
+import 'package:new_project/app/modules/home/home_screen.dart';
 import 'package:new_project/app/modules/widgets/bottom_navigation_bar.dart';
 
 void main() {
@@ -14,11 +16,12 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       builder: (context, child) {
         return GetMaterialApp(
+          theme: ThemeData(scaffoldBackgroundColor: AppColors.kWhiteColor),
           scrollBehavior:
               const MaterialScrollBehavior().copyWith(overscroll: false),
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-          home: const CustomBottomNavigationBar(),
+          title: 'Travel Africa',
+          home: HomeScreen(),
         );
       },
     );

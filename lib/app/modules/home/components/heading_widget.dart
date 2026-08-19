@@ -11,13 +11,13 @@ class MyHeadingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text("Travel $title", style: AppTypography.kExtraBold14),
-        Padding(
-          padding: EdgeInsets.only(right: 20.w),
-          child: TextButton(
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text("Travel $title", style: AppTypography.kExtraBold14),
+          TextButton(
             style: ButtonStyle(
               splashFactory: NoSplash.splashFactory,
               overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -31,8 +31,8 @@ class MyHeadingWidget extends StatelessWidget {
                   AppTypography.kBold12.copyWith(color: AppColors.kGreyColor),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

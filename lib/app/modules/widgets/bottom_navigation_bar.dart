@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:new_project/app/data/constants/app_colors.dart';
-import 'package:new_project/app/modules/detail_screen.dart';
 import 'package:new_project/app/modules/home/home_screen.dart';
-import 'package:new_project/app/modules/location_screen.dart';
-import 'package:new_project/app/modules/profile_screen.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({super.key});
@@ -18,9 +15,9 @@ class CustomBottomNavigationBar extends StatefulWidget {
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   List<Widget> pages = [
     const HomeScreen(), // index 0
-    const DetailScreen(), // index 1
-    const LocationScreen(), // index 2
-    const ProfileScreen(), // index 3
+    const HomeScreen(), // index 1
+    const HomeScreen(), // index 2
+    const HomeScreen(), // index 3
   ];
   int _currentIndex = 0;
   @override
@@ -28,8 +25,8 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return Scaffold(
       extendBody: true,
       body: pages[_currentIndex],
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+      bottomNavigationBar: SizedBox(
+        height: 102.h,
         child: FloatingNavbar(
           selectedBackgroundColor: Colors.black,
           iconSize: 20.sp,
