@@ -5,7 +5,6 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:new_project/app/data/constants/app_colors.dart';
 import 'package:new_project/app/data/constants/app_typography.dart';
 import 'package:new_project/app/models/travel_package_model.dart';
-import 'package:new_project/app/modules/details_screen/components/custom_details_row.dart';
 
 class DetailsScreen extends StatefulWidget {
   final TravelPackageModel detailsScreenModel;
@@ -45,7 +44,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.4),
+                      color: Colors.black.withValues(alpha: 0.4),
                       blurRadius: 10.r,
                       offset: const Offset(0, 3),
                     ),
@@ -95,7 +94,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     Text(
                       widget.detailsScreenModel.description,
                       style: AppTypography.kMedium10.copyWith(
-                        color: AppColors.kBlackColor.withOpacity(0.7),
+                        color: AppColors.kBlackColor.withValues(alpha: 0.7),
                       ),
                       textAlign: TextAlign.justify,
                     )

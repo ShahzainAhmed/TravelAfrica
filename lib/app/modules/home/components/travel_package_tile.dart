@@ -28,7 +28,7 @@ class _MyTravelPackageTileState extends State<MyTravelPackageTile> {
           color: AppColors.kWhiteColor,
           boxShadow: [
             BoxShadow(
-              color: AppColors.kBlackColor.withOpacity(0.2),
+              color: AppColors.kBlackColor.withValues(alpha: 0.2),
               spreadRadius: 0.5,
               blurRadius: 8,
               offset: const Offset(0, 3), // changes position of shadow

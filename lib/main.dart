@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:new_project/app/data/constants/app_colors.dart';
 import 'package:new_project/app/modules/home/home_screen.dart';
-import 'package:new_project/app/modules/widgets/bottom_navigation_bar.dart';
 
 void main() {
   runApp(const MyApp());

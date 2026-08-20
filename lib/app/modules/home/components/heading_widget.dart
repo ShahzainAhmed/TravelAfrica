@@ -20,11 +20,11 @@ class MyHeadingWidget extends StatelessWidget {
           TextButton(
             style: ButtonStyle(
               splashFactory: NoSplash.splashFactory,
-              overlayColor: MaterialStateProperty.all(Colors.transparent),
-              padding: MaterialStateProperty.all(EdgeInsets.zero),
+              overlayColor: WidgetStateProperty.all(Colors.transparent),
+              padding: WidgetStateProperty.all(EdgeInsets.zero),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            onPressed: () => Get.to(const TravelPackageScreen()),
+            onPressed: () => Get.to(() => const TravelPackageScreen()),
             child: Text(
               "See More",
               style:

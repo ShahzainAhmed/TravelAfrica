@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
+                        color: Colors.grey.withValues(alpha: 0.1),
                         spreadRadius: 0.5,
                         blurRadius: 8,
                         offset:
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(10.r),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
+                        color: Colors.grey.withValues(alpha: 0.1),
                         spreadRadius: 0.5,
                         blurRadius: 8,
                         offset:
@@ -137,9 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       MyLargeTile(
                         travelPackageModel: myTravelPackageList[index],
-                        onTap: () => Get.to(DetailsScreen(
-                          detailsScreenModel: myTravelPackageList[index],
-                        )),
+                        onTap: () => Get.to(() => DetailsScreen(
+                              detailsScreenModel: myTravelPackageList[index],
+                            )),
                       ),
                     ],
                   ),
@@ -164,10 +164,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       MyTravelPackageTile(
-                        onTap: () => Get.to(DetailsScreen(
-                          detailsScreenModel:
-                              myTravelPackageList[reversedIndex],
-                        )),
+                        onTap: () => Get.to(() => DetailsScreen(
+                              detailsScreenModel:
+                                  myTravelPackageList[reversedIndex],
+                            )),
                         travelPackageModel: myTravelPackageList[reversedIndex],
                       ),
                     ],

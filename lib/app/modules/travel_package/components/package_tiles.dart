@@ -32,7 +32,7 @@ class _TravelPackageTilesState extends State<TravelPackageTiles> {
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.kBlackColor.withOpacity(0.18),
+                    color: AppColors.kBlackColor.withValues(alpha: 0.18),
                     blurRadius: 12.r,
                     spreadRadius: 1.r,
                     offset: Offset(0, 5.h),

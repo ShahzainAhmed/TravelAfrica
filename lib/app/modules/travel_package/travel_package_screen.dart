@@ -95,9 +95,9 @@ class _TravelPackageScreenState extends State<TravelPackageScreen> {
             itemCount: myTravelPackageList.length,
             itemBuilder: (context, index) {
               return TravelPackageTiles(
-                onTap: () => Get.to(DetailsScreen(
-                  detailsScreenModel: myTravelPackageList[index],
-                )),
+                onTap: () => Get.to(() => DetailsScreen(
+                      detailsScreenModel: myTravelPackageList[index],
+                    )),
                 travelPackageModel: myTravelPackageList[index],
               );
             },
