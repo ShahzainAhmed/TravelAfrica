@@ -15,7 +15,11 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       builder: (context, child) {
         return GetMaterialApp(
-          theme: ThemeData(scaffoldBackgroundColor: AppColors.kWhiteColor),
+          theme: ThemeData(
+              bottomSheetTheme: const BottomSheetThemeData(
+                  backgroundColor: AppColors.kTransparentColor),
+              scaffoldBackgroundColor: AppColors.kWhiteColor,
+              shadowColor: AppColors.kTransparentColor),
           scrollBehavior:
               const MaterialScrollBehavior().copyWith(overscroll: false),
           debugShowCheckedModeBanner: false,

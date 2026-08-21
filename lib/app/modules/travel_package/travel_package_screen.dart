@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -84,23 +85,26 @@ class _TravelPackageScreenState extends State<TravelPackageScreen> {
           ),
           SizedBox(height: 20.h),
           Center(
-              child:
-                  Text("Travel Packages", style: AppTypography.kExtraBold16)),
+            child: Text("Travel Packages", style: AppTypography.kExtraBold16),
+          ),
           SizedBox(height: 20.h),
-          ListView.separated(
-            shrinkWrap: true,
-            separatorBuilder: (context, index) => SizedBox(height: 20.h),
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.vertical,
-            itemCount: myTravelPackageList.length,
-            itemBuilder: (context, index) {
-              return TravelPackageTiles(
-                onTap: () => Get.to(() => DetailsScreen(
-                      detailsScreenModel: myTravelPackageList[index],
-                    )),
-                travelPackageModel: myTravelPackageList[index],
-              );
-            },
+          FadeInUp(
+            duration: const Duration(milliseconds: 1500),
+            child: ListView.separated(
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => SizedBox(height: 20.h),
+              physics: const BouncingScrollPhysics(),
+              scrollDirection: Axis.vertical,
+              itemCount: myTravelPackageList.length,
+              itemBuilder: (context, index) {
+                return TravelPackageTiles(
+                  onTap: () => Get.to(() => DetailsScreen(
+                        detailsScreenModel: myTravelPackageList[index],
+                      )),
+                  travelPackageModel: myTravelPackageList[index],
+                );
+              },
+            ),
           )
         ],
       ),

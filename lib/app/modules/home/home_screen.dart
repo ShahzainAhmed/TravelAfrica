@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -53,9 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            CircleAvatar(
-              foregroundImage: AssetImage(AppAssets.kAvatar),
-            )
+            CircleAvatar(foregroundImage: AssetImage(AppAssets.kAvatar))
           ],
         ),
         leadingWidth: 0,
@@ -68,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Text(
-              "let's go \ntrip to africa",
+              "Let's go \nTrip to Africa",
               style: AppTypography.kBold30,
             ),
           ),
@@ -135,11 +134,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.symmetric(vertical: 10.h),
                   child: Column(
                     children: [
-                      MyLargeTile(
-                        travelPackageModel: myTravelPackageList[index],
-                        onTap: () => Get.to(() => DetailsScreen(
-                              detailsScreenModel: myTravelPackageList[index],
-                            )),
+                      FadeInUp(
+                        duration: const Duration(milliseconds: 1500),
+                        child: MyLargeTile(
+                          travelPackageModel: myTravelPackageList[index],
+                          onTap: () => Get.to(() => DetailsScreen(
+                                detailsScreenModel: myTravelPackageList[index],
+                              )),
+                        ),
                       ),
                     ],
                   ),
@@ -163,12 +165,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: EdgeInsets.symmetric(vertical: 10.h),
                   child: Column(
                     children: [
-                      MyTravelPackageTile(
-                        onTap: () => Get.to(() => DetailsScreen(
-                              detailsScreenModel:
-                                  myTravelPackageList[reversedIndex],
-                            )),
-                        travelPackageModel: myTravelPackageList[reversedIndex],
+                      FadeInUp(
+                        duration: const Duration(milliseconds: 1500),
+                        child: MyTravelPackageTile(
+                          onTap: () => Get.to(() => DetailsScreen(
+                                detailsScreenModel:
+                                    myTravelPackageList[reversedIndex],
+                              )),
+                          travelPackageModel:
+                              myTravelPackageList[reversedIndex],
+                        ),
                       ),
                     ],
                   ),

@@ -41,6 +41,8 @@ dependencies:
   flutter_phosphor_icons: ^0.0.1+6
   flutter_svg: ^2.0.5
   floating_bottom_navigation_bar: ^1.5.2
+  animate_do: ^5.1.0
+  bounce: ^1.0.2
 
 dev_dependencies:
   flutter_test:
