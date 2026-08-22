@@ -10,4 +10,11 @@ class AppColors {
   static const kLightGrey = Color(0xFFE0E0E0);
   static const kOrangeColor = Colors.deepOrange;
   static const kYellowColor = Colors.amber;
+
+  // Colors based on images
+  static const kFlamingoColor = kPrimaryColor;
+  static const kCamelColor = Color(0xffc88f64);
+  static const kRiverColor = Color(0xff616942);
+  static const kPenguinsColor = Color(0xff4b5c7c);
+  static const kZebraColor = Color(0xff213f3d);
 }

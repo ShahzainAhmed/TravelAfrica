@@ -23,23 +23,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-
-      // APP BAR
-      // appBar: AppBar(
-      //   backgroundColor: Colors.transparent,
-      //   automaticallyImplyLeading: false,
-      //   elevation: 0.0,
-      //   leading: IconButton(
-      //     onPressed: () => Get.back(),
-      //     icon: const Icon(
-      //       Icons.arrow_back_ios_new,
-      //       color: AppColors.kWhiteColor,
-      //     ),
-      //   ),
-      // ),
-
-      // BODY
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
@@ -47,11 +30,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
           child: Column(
             children: [
               SizedBox(height: 50.h),
-
               // IMAGE
               FadeInUp(
-                duration: const Duration(milliseconds: 1200),
-                delay: const Duration(milliseconds: 150),
+                duration: const Duration(milliseconds: 700),
+                delay: const Duration(milliseconds: 100),
                 from: 25,
                 child: Container(
                   height: Get.height * 0.55,
@@ -72,16 +54,31 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
               ),
 
-              SizedBox(height: 25.h),
+              SizedBox(height: 14.h),
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Column(
                   children: [
+                    // PACKAGE DETAILS
+                    // PACKAGE DETAILS
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 700),
+                      delay: const Duration(milliseconds: 650),
+                      from: 18,
+                      child: Text(
+                        widget.detailsScreenModel.packageDetails,
+                        style: AppTypography.kBold10.copyWith(
+                          color: widget.detailsScreenModel.imageColors,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10.h),
+
                     // TITLE + PRICE
                     FadeInUp(
-                      duration: const Duration(milliseconds: 1100),
-                      delay: const Duration(milliseconds: 450),
+                      duration: const Duration(milliseconds: 650),
+                      delay: const Duration(milliseconds: 800),
                       from: 15,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -102,8 +99,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
                     // SUBTITLE
                     FadeInUp(
-                      duration: const Duration(milliseconds: 1100),
-                      delay: const Duration(milliseconds: 650),
+                      duration: const Duration(milliseconds: 650),
+                      delay: const Duration(milliseconds: 950),
                       from: 12,
                       child: Row(
                         children: [
@@ -123,12 +120,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                     ),
 
-                    SizedBox(height: 14.h),
-
+                    SizedBox(height: 10.h),
                     // DESCRIPTION
                     FadeInUp(
-                      duration: const Duration(milliseconds: 1200),
-                      delay: const Duration(milliseconds: 1050),
+                      duration: const Duration(milliseconds: 650),
+                      delay: const Duration(milliseconds: 1100),
                       from: 12,
                       child: Text(
                         widget.detailsScreenModel.description,
@@ -136,20 +132,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           color: AppColors.kBlackColor.withValues(alpha: 0.7),
                         ),
                         textAlign: TextAlign.justify,
-                      ),
-                    ),
-                    SizedBox(height: 14.h),
-
-                    // PACKAGE DETAILS
-                    FadeInUp(
-                      duration: const Duration(milliseconds: 1100),
-                      delay: const Duration(milliseconds: 850),
-                      from: 12,
-                      child: Text(
-                        widget.detailsScreenModel.packageDetails,
-                        style: AppTypography.kMedium10.copyWith(
-                          color: AppColors.kGreyColor,
-                        ),
                       ),
                     ),
                   ],
@@ -161,21 +143,26 @@ class _DetailsScreenState extends State<DetailsScreen> {
       ),
 
       // BOTTOM BOOK BUTTON
-      bottomSheet: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Container(
-          height: 50.h,
-          width: Get.width,
-          margin: EdgeInsets.symmetric(vertical: 20.h),
-          decoration: BoxDecoration(
-            color: AppColors.kPrimaryColor,
-            borderRadius: BorderRadius.circular(50.r),
-          ),
-          child: Center(
-            child: Text(
-              "Book Now",
-              style: AppTypography.kBold14.copyWith(
-                color: AppColors.kWhiteColor,
+      bottomSheet: FadeInUp(
+        duration: const Duration(milliseconds: 700),
+        delay: const Duration(milliseconds: 1250),
+        from: 18,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Container(
+            height: 50.h,
+            width: Get.width,
+            margin: EdgeInsets.symmetric(vertical: 20.h),
+            decoration: BoxDecoration(
+              color: widget.detailsScreenModel.imageColors,
+              borderRadius: BorderRadius.circular(50.r),
+            ),
+            child: Center(
+              child: Text(
+                "Book Now",
+                style: AppTypography.kBold14.copyWith(
+                  color: AppColors.kWhiteColor,
+                ),
               ),
             ),
           ),
